@@ -1,0 +1,89 @@
+# Archivo .gitignore para proyecto Python
+
+## Archivos sensibles ##
+.env
+*.env
+.env/*
+
+## Entornos virtuales Python ##
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+## Archivos de entorno de Python ##
+*.py[cod]
+__pycache__/
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+## Archivos de desarrollo ##
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+## Archivos de prueba y coverage ##
+htmlcov/
+.tox/
+.nox/
+.coverage
+*.cover
+.hypothesis/
+.pytest_cache/
+
+## Jupyter Notebook ##
+.ipynb_checkpoints
+
+## Logs y bases de datos ##
+*.log
+*.sqlite
+*.db
+
+## Archivos de sistema operativo ##
+*.DS_Store
+*.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+## Archivos de PyCharm ##
+.idea/
+*.iml
+
+## Archivos de Visual Studio Code ##
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+## Archivos de configuración personalizados ##
+config_local.py
+settings_local.py
