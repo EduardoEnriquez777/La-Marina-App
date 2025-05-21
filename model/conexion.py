@@ -4,22 +4,28 @@ from sqlalchemy.orm import sessionmaker
 import os
 from dotenv import load_dotenv
 
-# Cargar variables del archivo .env
 load_dotenv()
 
-# Obtener la URL de conexión
-DATABASE_URL = "mysql+pymysql://root:@localhost/23270641"
+DB_USER = os.getenv("DB_USER", "root")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "Carloscenm1987.")
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "3306")
+DB_NAME = os.getenv("DB_NAME", "23270641")
 
-# Crear el engine de SQLAlchemy
-engine = create_engine(DATABASE_URL, echo=True)
 
-# Crear la sesión
+if not all([DB_USER, DB_PASSWORD, DB_NAME]):
+    raise ValueError("Faltan variables necesarias para la conexión")
+
+# Construimos la URL desde las variables
+def build_connection_url():
+    return f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+# Crear el engine con la URL construida al vuelo
+engine = create_engine(build_connection_url(), echo=True)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Declarative base
 Base = declarative_base()
 
-# Dependencia para obtener la sesión de la BD
 def get_db():
     db = SessionLocal()
     try:
